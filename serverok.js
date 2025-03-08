@@ -17,7 +17,11 @@ const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
 
 // ✅ Function to Scrape Website Data
 async function scrapeWebsite(url) {
-    const browser = await puppeteer.launch({ headless: "new" });
+    const browser = await puppeteer.launch({
+    headless: "new",
+    executablePath: process.env.CHROME_PATH || "/usr/bin/google-chrome-stable",
+});
+
     const page = await browser.newPage();
 
     try {
