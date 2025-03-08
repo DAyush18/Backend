@@ -19,7 +19,7 @@ const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
 async function scrapeWebsite(url) {
     const browser = await puppeteer.launch({
     headless: "new",
-    executablePath: process.env.CHROME_PATH || "/usr/bin/google-chrome-stable",
+    args: ["--no-sandbox", "--disable-setuid-sandbox"]
 });
 
     const page = await browser.newPage();
